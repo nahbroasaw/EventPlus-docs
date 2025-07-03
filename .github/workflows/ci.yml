@@ -5,6 +5,7 @@ on:
     branches:
       - main
 
+# Grant required permissions
 permissions:
   contents: read
   pages: write
@@ -16,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -31,18 +32,14 @@ jobs:
         run: |
           mkdocs build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./site
 
   deploy:
-    runs-on: ubuntu-latest
     needs: build
-
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
