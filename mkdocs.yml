@@ -5,13 +5,17 @@ theme:
   palette: 
 
     # Palette toggle for light mode
-    - scheme: default
+    - scheme: slate
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: slate
+    - scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to light mode 
@@ -29,25 +33,40 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
+  highlightjs: true
+  hljs_languages:
+    - lua
+
+markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - attr_list
+    - pymdownx.emoji:
+       emoji_index: !!python/name:material.extensions.emoji.twemoji
+       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    - toc:
+      permalink: true   
 
 plugins:
   - search
   - tags
 
+extra_javascript:
+  - javascripts/tags.js
+
 markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences
+  - attr_list
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
-  - Home: index.md
-  - Code Docs:
-    - Java: coding/my-first-java-file.md
-  - About: 
-    - About Me: about/about.md
-    - Childhood: about/childhood.md
-  - Tags: tags.md  
+  - Home: 
+    - Introduction: Home/index.md
+    - Installation: Home/installation.md
+    - Examples:
+      - Input: Home/examples/input.md

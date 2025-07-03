@@ -1,0 +1,17 @@
+:root {
+  --md-admonition-icon--developer-notes: url('https://cdn-icons-png.flaticon.com/512/78/78933.png')
+}
+.md-typeset .admonition.developer-notes,
+.md-typeset details.developer-notes {
+  border-color: rgb(76, 111, 226);
+}
+.md-typeset .developer-notes > .admonition-title,
+.md-typeset .developer-notes > summary {
+  background-color: rgba(76, 111, 226, 0.1);
+}
+.md-typeset .developer-notes > .admonition-title::before,
+.md-typeset .developer-notes > summary::before {
+  background-color: rgb(476, 111, 226);
+  -webkit-mask-image: var(--md-admonition-icon--developer-notes);
+          mask-image: var(--md-admonition-icon--developer-notes);
+}
